@@ -128,7 +128,7 @@ public class Clock extends TextView implements DemoMode, CommandQueue.Callbacks,
                 R.styleable.Clock,
                 0, 0);
         try {
-            mAmPmStyle = a.getInt(R.styleable.Clock_amPmStyle, AM_PM_STYLE_GONE);
+            mAmPmStyle = a.getInt(R.styleable.Clock_amPmStyle, AM_PM_STYLE_NORMAL);
             mShowDark = a.getBoolean(R.styleable.Clock_showDark, true);
         } finally {
             a.recycle();
@@ -359,7 +359,7 @@ public class Clock extends TextView implements DemoMode, CommandQueue.Callbacks,
         CharSequence dateString = null;
 
         String result = "";
-        String timeResult = sdf.format(mCalendar.getTime());
+        String timeResult = is24 ? sdf.format(mCalendar.getTime()) : DateFormat.format(format, mCalendar.getTime()).toString();
         String dateResult = "";
 
         if (mClockDateDisplay != CLOCK_DATE_DISPLAY_GONE && !mQuickStatusBarHeader) {

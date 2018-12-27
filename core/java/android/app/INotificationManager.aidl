@@ -56,6 +56,9 @@ interface INotificationManager
     boolean areNotificationsEnabled(String pkg);
     int getPackageImportance(String pkg);
 
+    void setPackagePriority(String pkg, int uid, int importance);
+    int getPackagePriority(String pkg, int uid);
+
     void createNotificationChannelGroups(String pkg, in ParceledListSlice channelGroupList);
     void createNotificationChannels(String pkg, in ParceledListSlice channelsList);
     void createNotificationChannelsForPackage(String pkg, int uid, in ParceledListSlice channelsList);
